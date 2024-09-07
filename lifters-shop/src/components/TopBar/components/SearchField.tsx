@@ -1,16 +1,10 @@
-import React from 'react';
-// import { useLocation } from 'react-router-dom';
+import React from "react";
 
-interface SearchFieldProps {
-  children?: React.ReactNode;
-}
-
-const SearchField: React.FC<SearchFieldProps> = ({ children }) => {
-  // const location = useLocation();
-
+const SearchField: React.FC = () => {
   return (
-    <div>
-     <p>topbar</p>
+    <div className="d-flex flex-row gap-2">
+      <i className="bi bi-search"></i> 
+      <input className='bg-transparent border-0' type="text" placeholder="Search"/>
     </div>
   );
 };
