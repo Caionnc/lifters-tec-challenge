@@ -1,38 +1,36 @@
 import React from "react";
-import { Colors } from "@/model/colors";
+import { Color, colorsData } from "@/model/colors";
 import ColorPickerItem from "@/components/ColorPickerItem";
 import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
-
-const colorArray: [keyof Colors, string][] = Object.entries({
-  orange: "#DF9167",
-  darkPurple: "#7B61FF",
-  darkGreen: "#219653",
-  darkBlue: "#2F80ED",
-  red: "#EB5757",
-  lightBlue: "#F2F2F2",
-  darkGrey: "#4F4F4F",
-  lightPurple: "#BB6BD9",
-  white: "#F2F2F2",
-  lightGreen: "#BB6BD9",
-}) as [keyof Colors, string][];
 
 interface ColorPickerProps {
   children?: React.ReactNode;
   size: ColorPickerItemSize;
-  colors?: [keyof Colors, string][]; // Optional prop to allow custom color arrays
+  colors?: Color[];
 }
 
-const ColorPicker: React.FC<ColorPickerProps> = ({ children, size, colors }) => {
-  const [activeColor, setActiveColor] = React.useState<keyof Colors | "">("");
+const ColorPicker: React.FC<ColorPickerProps> = ({
+  children,
+  size,
+  colors,
+}) => {
+  const [activeColor, setActiveColor] = React.useState<string | "">("");
+  const colorArray = Object.entries(colorsData) as Color[];
 
-  const handleActiveColor = (color: keyof Colors) => {
+  const handleActiveColor = React.useCallback((color: string) => {
     setActiveColor(color);
-  };
+  }, []);
 
-  const colorPalette = colors ?? colorArray;
+  const colorPalette = colors !== undefined ? colors : colorArray;
+  console.log("colorPalette", colorPalette);
 
-  const firstRowColors = colorPalette.slice(0, Math.ceil(colorPalette.length / 2));
-  const secondRowColors = colorPalette.slice(Math.ceil(colorPalette.length / 2));
+  const firstRowColors = colorPalette.slice(
+    0,
+    Math.ceil(colorPalette.length / 2)
+  );
+  const secondRowColors = colorPalette.slice(
+    Math.ceil(colorPalette.length / 2)
+  );
 
   return (
     <div className="d-flex flex-column gap-1">
@@ -41,9 +39,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ children, size, colors }) => 
           <ColorPickerItem
             key={color}
             size={size}
-            color={color}
-            isActive={activeColor === color}
-            onClick={() => handleActiveColor(color)}
+            color={hex}
+            isActive={activeColor === hex}
+            onClick={() => handleActiveColor(hex)}
           />
         ))}
       </div>
@@ -52,9 +50,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ children, size, colors }) => 
           <ColorPickerItem
             key={color}
             size={size}
-            color={color}
-            isActive={activeColor === color}
-            onClick={() => handleActiveColor(color)}
+            color={hex}
+            isActive={activeColor === hex}
+            onClick={() => handleActiveColor(hex)}
           />
         ))}
       </div>

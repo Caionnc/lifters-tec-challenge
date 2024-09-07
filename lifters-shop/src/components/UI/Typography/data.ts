@@ -1,8 +1,10 @@
 export enum FontSize {
+  XXS = "size-xxs",
   XS = "size-xs",
   SM = "size-sm",
   MD = "size-md",
   LG = "size-lg",
+  LLG = "size-llg",
   XLG = "size-xlg",
   XXL = "size-xxl",
 }

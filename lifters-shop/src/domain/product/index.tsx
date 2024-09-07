@@ -3,7 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ColorPicker from "../retail/components/ColorPicker";
 import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
-import { FontSize } from "@/components/UI/Typography/data";
+import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 
 const Product: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -39,14 +39,14 @@ const Product: React.FC = () => {
       </div>
       <div className="d-flex flex-column gap-2">
         <div className="d-flex flex-column gap-1">
-          <Typography size={FontSize.LG} variant="publicSans" color="dark">
+          <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="dark">
             {productId}
           </Typography>
-          <Typography size={FontSize.LG} variant="publicSans" color="dark">
+          <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="dark">
             $99
           </Typography>
         </div>
-        <Typography size={FontSize.LG} variant="publicSans" color="dark">
+        <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="dark">
           Revamp your style with the latest designer
           <br />
           trends in men’s clothing or achieve
@@ -56,10 +56,10 @@ const Product: React.FC = () => {
           line-up of timeless pieces.
         </Typography>
         <div className="d-flex flex-column gap-1">
-          <Typography size={FontSize.LG} variant="publicSans" color="secondary">
+          <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="secondary">
             Color
           </Typography>
-          <ColorPicker size={ColorPickerItemSize.Large}></ColorPicker>
+          <ColorPicker size={ColorPickerItemSize.LARGE}></ColorPicker>
         </div>
 
         <p>Product Description</p>
