@@ -1,0 +1,41 @@
+@import "bootstrap/scss/bootstrap";
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.font-public-sans {
+  font-family: "Public Sans", sans-serif;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fw-normal {
+  font-weight: 400;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-dark {
+  color: #000;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+.text-secondary {
+  color: #6c757d;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.bgg-blue {
+  background-color: #007bff;
+}

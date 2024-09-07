@@ -1,0 +1,14 @@
+@import "bootstrap/scss/bootstrap";
+
+.top-bar-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  background-color: var(--bs-dark);
+  color: var(--bs-light);
+  padding: 18px 110px;
+}

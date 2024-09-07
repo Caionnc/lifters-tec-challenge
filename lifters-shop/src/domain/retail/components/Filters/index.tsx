@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Typography from "@/components/UI/Typography";
 import ColorPicker from "../ColorPicker";
+import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
 
 interface FiltersProps {
   children?: React.ReactNode;
@@ -10,17 +11,23 @@ interface FiltersProps {
 const Filters: React.FC<FiltersProps> = ({ children }) => {
   return (
     <div className="d-flex flex-column gap-3">
-      {/* Filters Title + clear filters */}
-      <div className="d-flex flex-row gap-3 align-items-center">
+      <div className="d-flex flex-row gap-3 align-items-end">
         <Typography heading="h4" variant="publicSans" color="dark" bold>
           Filters
         </Typography>
-        <Typography color="dark" variant="publicSans" bold>
-          <u>Clear filters</u>
-        </Typography>
+        <button
+          className="btn btn-link p-0"
+          onClick={() => console.log("clear filters callback")}
+          style={{ textAlign: "right" }}
+        >
+          <div className="d-fle flex-column align-self-end">
+            <Typography color="dark" variant="publicSans">
+              <u style={{ color: "#C4C4C4" }}>Clear filters</u>
+            </Typography>
+          </div>
+        </button>
       </div>
       <div className="d-flex flex-column gap-3">
-        {/* Categories */}
         <Typography color="dark" bold>
           Categories
         </Typography>
@@ -108,7 +115,7 @@ const Filters: React.FC<FiltersProps> = ({ children }) => {
         <Typography color="dark" bold>
           Color
         </Typography>
-        <ColorPicker></ColorPicker>
+        <ColorPicker size={ColorPickerItemSize.Large}></ColorPicker>
       </div>
     </div>
   );

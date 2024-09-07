@@ -2,18 +2,27 @@ import React from "react";
 import SearchField from "./components/SearchField";
 import IconButton from "./components/IconButton";
 import Typography from "../UI/Typography";
+import { useNavigate } from "react-router-dom";
+import styles from "./TopBar.module.scss";
 interface TopBarProps {
   children?: React.ReactNode;
 }
 
 const TopBar: React.FC<TopBarProps> = ({ children }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/`);
+  };
   return (
     <div className="d-flex flex-column gap-0">
-      <div className="absolute-top d-flex flex-fill flex-row justify-content-between align-items-center m-0 px-5 py-4 bg-dark text-light">
+      <div className={styles["top-bar-container"]}>
         <div className="d-flex align-items-center gap-3">
-          <Typography variant="inter" bold>
-            Lifters Shop
-          </Typography>
+          <div style={{ cursor: "pointer" }} onClick={handleClick}>
+            <Typography heading="h5" variant="inter" bold color="white">
+              Lifter's Shop
+            </Typography>
+          </div>
           <Typography variant="inter">Shop</Typography>
           <Typography variant="inter">Store</Typography>
           <Typography variant="inter">About</Typography>

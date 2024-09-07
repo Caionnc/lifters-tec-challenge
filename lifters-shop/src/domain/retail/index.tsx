@@ -1,6 +1,7 @@
 import Typography from "@/components/UI/Typography";
 import React from "react";
 import Filters from "./components/Filters";
+import ProductPanel from "./components/ProductPanel";
 
 const Retail: React.FC = () => {
   Retail.displayName = "Retail";
@@ -19,9 +20,9 @@ const Retail: React.FC = () => {
           pieces.
         </Typography>
       </div>
-      <div className="d-flex flex-row gap-5 px-5 py-5 bg-white">
+      <div className="d-flex flex-row gap-5 justify-content-between px-5 py-5 bg-white">
         <Filters></Filters>
-        <div>ProductPanel Component</div>
+        <ProductPanel></ProductPanel>
       </div>
     </div>
   );

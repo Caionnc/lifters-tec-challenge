@@ -1,31 +1,35 @@
 import React, { useCallback } from "react";
-import { Colors } from "@/model/colors";
 import { ColorPickerItemSize } from "./data";
+import styles from "./ColorPickerItem.module.scss";
 
 interface ColorPickerItemProps {
   size: ColorPickerItemSize;
   color: string;
-  activeColor: keyof Colors | "";
-  setActive: () => void;
+  isActive: boolean;
+  onClick: () => void;
 }
 
 const ColorPickerItem: React.FC<ColorPickerItemProps> = ({
   size,
   color,
-  activeColor,
-  setActive,
+  isActive,
+  onClick,
 }) => {
-  const handleActiveColor = useCallback(() => {
-    setActive();
-  }, [setActive]);
+  const handleClick = useCallback(() => {
+    onClick();
+  }, [onClick]);
 
   return (
     <div
-      className={`border ${
-        activeColor ? "border-dark" : ""
-      } ${size}`}
-      style={{ backgroundColor: color, cursor: "pointer", width: size, height: "30px", borderRadius: "50%" }}
-      onClick={handleActiveColor}
+      className={`${styles["color-picker-item"]} ${
+        isActive ? styles["active"] : ""
+      }`}
+      style={{
+        backgroundColor: color,
+        width: size,
+        height: size,
+      }}
+      onClick={handleClick}
     ></div>
   );
 };

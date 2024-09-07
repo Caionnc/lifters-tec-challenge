@@ -18,39 +18,43 @@ const colorArray: [keyof Colors, string][] = Object.entries({
 
 interface ColorPickerProps {
   children?: React.ReactNode;
+  size: ColorPickerItemSize;
+  colors?: [keyof Colors, string][]; // Optional prop to allow custom color arrays
 }
 
-const ColorPicker: React.FC<ColorPickerProps> = ({ children }) => {
+const ColorPicker: React.FC<ColorPickerProps> = ({ children, size, colors }) => {
   const [activeColor, setActiveColor] = React.useState<keyof Colors | "">("");
 
   const handleActiveColor = (color: keyof Colors) => {
     setActiveColor(color);
   };
 
-  const firstRowColors = colorArray.slice(0, Math.ceil(colorArray.length / 2));
-  const secondRowColors = colorArray.slice(Math.ceil(colorArray.length / 2));
+  const colorPalette = colors ?? colorArray;
+
+  const firstRowColors = colorPalette.slice(0, Math.ceil(colorPalette.length / 2));
+  const secondRowColors = colorPalette.slice(Math.ceil(colorPalette.length / 2));
 
   return (
     <div className="d-flex flex-column gap-1">
       <div className="d-flex flex-row gap-1">
-        {firstRowColors.map(([name, color]) => (
+        {firstRowColors.map(([color, hex]) => (
           <ColorPickerItem
-            key={name}
-            size={ColorPickerItemSize.Medium}
+            key={color}
+            size={size}
             color={color}
-            activeColor={activeColor === name ? name : ""}
-            setActive={() => handleActiveColor(name)}
+            isActive={activeColor === color}
+            onClick={() => handleActiveColor(color)}
           />
         ))}
       </div>
       <div className="d-flex flex-row gap-1">
-        {secondRowColors.map(([name, color]) => (
+        {secondRowColors.map(([color, hex]) => (
           <ColorPickerItem
-            key={name}
-            size={ColorPickerItemSize.Medium}
+            key={color}
+            size={size}
             color={color}
-            activeColor={activeColor === name ? name : ""}
-            setActive={() => handleActiveColor(name)}
+            isActive={activeColor === color}
+            onClick={() => handleActiveColor(color)}
           />
         ))}
       </div>

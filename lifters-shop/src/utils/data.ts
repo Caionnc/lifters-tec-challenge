@@ -1,5 +1,6 @@
 export const liftersShopProducts = [
   {
+    id: 1,
     titulo: "Men’s winter jacket 0",
     valor: "$99",
     descricao:
@@ -40,6 +41,7 @@ export const liftersShopProducts = [
     ],
   },
   {
+    id: 2,
     titulo: "Men’s winter jacket 1",
     valor: "$99",
     descricao:
@@ -80,6 +82,7 @@ export const liftersShopProducts = [
     ],
   },
   {
+    id: 3,
     titulo: "Men’s winter jacket 2",
     valor: "$99",
     descricao:
@@ -120,6 +123,7 @@ export const liftersShopProducts = [
     ],
   },
   {
+    id: 4,
     titulo: "Men’s winter jacket 3",
     valor: "$99",
     descricao:
