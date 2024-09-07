@@ -1,33 +1,37 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Typography.module.scss";
+import { FontSize, FontWeight } from "./data";
 
 type Variant = "inter" | "publicSans";
 interface TypographyProps {
   children?: React.ReactNode;
   variant?: Variant;
-  bold?: boolean;
+  fontWeight: FontWeight;
   color?: "white" | "dark" | "primary" | "secondary";
-  heading?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  size: FontSize;
 }
 
 const Typography: React.FC<TypographyProps> = ({
   children,
   variant = "inter",
-  bold = false,
+  fontWeight,
   color,
-  heading,
+  size,
 }) => {
   const fontClass =
-    variant === "publicSans" ? styles["font-public-sans"] : styles["font-inter"];
-  const fontWeight = bold ? styles["fw-bold"] : styles["fw-normal"];
+    variant === "publicSans"
+      ? styles["font-public-sans"]
+      : styles["font-inter"];
+  const fontWeightClass = styles[fontWeight];
   const textColor = color ? styles[`text-${color}`] : "";
-  const Heading = heading || "p";
 
   return (
-    <Heading className={`${styles["mb-0"]} ${fontClass} ${fontWeight} ${textColor}`}>
+    <p
+      className={`${styles["mb-0"]} ${fontClass} ${fontWeightClass} ${textColor} ${styles[size]}`}
+    >
       {children}
-    </Heading>
+    </p>
   );
 };
 

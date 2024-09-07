@@ -1,19 +1,25 @@
 @import "bootstrap/scss/bootstrap";
 
+// Font families
 .font-inter {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-inter);
 }
 
 .font-public-sans {
-  font-family: "Public Sans", sans-serif;
+  font-family: var(--font-public-sans);
+}
+
+// Font weights
+.fw-normal {
+  font-weight: 400;
+}
+
+.fw-semi-bold {
+  font-weight: 600;
 }
 
 .fw-bold {
   font-weight: 700;
-}
-
-.fw-normal {
-  font-weight: 400;
 }
 
 .text-white {
@@ -36,6 +42,27 @@
   margin-bottom: 0;
 }
 
-.bgg-blue {
-  background-color: #007bff;
+// Font sizes
+.size-xs {
+  font-size: var(--font-xs);
+}
+
+.size-sm {
+  font-size: var(--font-sm);
+}
+
+.size-md {
+  font-size: var(--font-md);
+}
+
+.size-lg {
+  font-size: var(--font-lg);
+}
+
+.size-xlg {
+  font-size: var(--font-xlg);
+}
+
+.size-xxl {
+  font-size: var(--font-xxl);
 }

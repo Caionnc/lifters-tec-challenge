@@ -3,6 +3,7 @@ import SearchField from "./components/SearchField";
 import IconButton from "./components/IconButton";
 import Typography from "../UI/Typography";
 import { useNavigate } from "react-router-dom";
+import { FontSize, FontWeight } from "../UI/Typography/data";
 import styles from "./TopBar.module.scss";
 interface TopBarProps {
   children?: React.ReactNode;
@@ -15,17 +16,40 @@ const TopBar: React.FC<TopBarProps> = ({ children }) => {
     navigate(`/`);
   };
   return (
-    <div className="d-flex flex-column gap-0">
+    <div className="d-flex flex-column">
       <div className={styles["top-bar-container"]}>
         <div className="d-flex align-items-center gap-3">
           <div style={{ cursor: "pointer" }} onClick={handleClick}>
-            <Typography heading="h5" variant="inter" bold color="white">
+            <Typography
+              size={FontSize.LG}
+              variant="inter"
+              fontWeight={FontWeight.SEMI_BOLD}
+              color="white"
+            >
               Lifter's Shop
             </Typography>
           </div>
-          <Typography variant="inter">Shop</Typography>
-          <Typography variant="inter">Store</Typography>
-          <Typography variant="inter">About</Typography>
+          <Typography
+            size={FontSize.SM}
+            variant="inter"
+            fontWeight={FontWeight.NORMAL}
+          >
+            Shop
+          </Typography>
+          <Typography
+            size={FontSize.SM}
+            variant="inter"
+            fontWeight={FontWeight.NORMAL}
+          >
+            Store
+          </Typography>
+          <Typography
+            size={FontSize.SM}
+            variant="inter"
+            fontWeight={FontWeight.NORMAL}
+          >
+            About
+          </Typography>
           <SearchField />
         </div>
         <div className="d-flex gap-1 align-items-center">
@@ -36,7 +60,13 @@ const TopBar: React.FC<TopBarProps> = ({ children }) => {
           >
             <i className="bi bi-handbag"></i>
           </IconButton>
-          <Typography variant="inter">Login</Typography>
+          <Typography
+            size={FontSize.SM}
+            variant="inter"
+            fontWeight={FontWeight.NORMAL}
+          >
+            Login
+          </Typography>
         </div>
       </div>
       {children}

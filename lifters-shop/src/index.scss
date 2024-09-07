@@ -5,5 +5,18 @@
   --font-public-sans: "Public Sans", sans-serif;
   --bs-dark: #000000;
   --bs-dark-rgb: 13, 13, 13;
-  --bs-ligh-rgb: 239, 242, 246;
+  --bs-light-rgb: 239, 242, 246;
+
+  //Variables for font weights
+  --font-weight-normal: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  // Variables for font sizes
+  --font-xs: 14px;
+  --font-sm: 17px;
+  --font-md: 18px;
+  --font-lg: 20px;
+  --font-xlg: 25px;
+  --font-xxl: 36px;
 }
