@@ -1,1 +1,22 @@
 @import "bootstrap/scss/bootstrap";
+
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-public-sans: "Public Sans", sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-public-sans {
+  font-family: var(--font-public-sans);
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.fw-normal {
+  font-weight: normal;
+}
