@@ -9,6 +9,8 @@
   margin: 0;
   width: 100%;
   background-color: var(--bs-dark);
+  border-bottom: 1px solid var(--bs-gray);
   color: var(--bs-light);
   padding: 18px 110px;
+  z-index: 1000;
 }

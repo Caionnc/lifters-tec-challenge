@@ -10,26 +10,24 @@ const Retail: React.FC = () => {
 
   return (
     <div className="d-flex flex-column">
-      <div className={styles["retail-container"]}>
+      <div className={styles["retail-advertisement-container"]}>
         <Typography
           variant="publicSans"
-          size={FontSize.LG}
-          fontWeight={FontWeight.BOLD}
+          size={FontSize.XXL}
+          fontWeight={FontWeight.SEMI_BOLD}
           color="white"
         >
           Shop Men's
         </Typography>
         <Typography
           variant="publicSans"
-          size={FontSize.LG}
+          size={FontSize.MD}
           fontWeight={FontWeight.NORMAL}
           color="white"
         >
-          Revamp your style with the latest designer trends in men’s clothing or
-          <br />
-          achieve a perfectly curated wardrobe thanks to our line-up of timeless
-          <br />
-          pieces.
+          Revamp your style with the latest designer trends in men’s<br />
+          clothing or achieve a perfectly curated wardrobe thanks to<br />
+          our line-up of timeless pieces.
         </Typography>
       </div>
       <div className="d-flex flex-row gap-5 justify-content-between px-5 py-5 bg-white">

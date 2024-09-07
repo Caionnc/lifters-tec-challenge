@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { liftersShopProducts } from "@/utils/data";
 import ProductCard from "@/components/ProductCard";
 import Typography from "@/components/UI/Typography";
-import { FontSize } from "@/components/UI/Typography/data";
+import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 
 interface ProductPanelProps {
   children?: React.ReactNode;
@@ -16,6 +16,7 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ children }) => {
         <div></div>
         <Typography
           size={FontSize.XS}
+          fontWeight={FontWeight.NORMAL}
           variant="publicSans"
           color="dark"
         >{`Showing 1003 Products`}</Typography>
