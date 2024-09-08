@@ -1,22 +1,31 @@
 import React from "react";
 import SearchField from "./components/SearchField";
-import IconButton from "./components/IconButton";
 import Typography from "../UI/Typography";
 import { useNavigate } from "react-router-dom";
 import { FontSize, FontWeight } from "../UI/Typography/data";
 import styles from "./TopBar.module.scss";
+import BagDropdown from "../BagDropdown";
+
 interface TopBarProps {
   children?: React.ReactNode;
 }
 
 const TopBar: React.FC<TopBarProps> = ({ children }) => {
   const navigate = useNavigate();
+  const [openBagDropdown, setOpenBagDropdown] = React.useState(false);
+
+  const handleOpenBagDropdown = React.useCallback(() => {
+    setOpenBagDropdown((prevState) => !prevState);
+  }, []);
 
   const handleNavHome = () => {
     navigate(`/`);
   };
+
   return (
     <div className="d-flex flex-column">
+      {/* Overlay that appears when the dropdown is open */}
+      {openBagDropdown && <div className={styles["overlay"]}></div>}
       <div className={styles["top-bar-container"]}>
         <div className="d-flex align-items-center gap-3">
           <div style={{ cursor: "pointer" }} onClick={handleNavHome}>
@@ -53,13 +62,11 @@ const TopBar: React.FC<TopBarProps> = ({ children }) => {
           <SearchField />
         </div>
         <div className="d-flex gap-1 align-items-center">
-          <IconButton
-            bagLength={"3"}
-            themeMode="light"
-            onClick={() => console.log("open bag drawer")}
-          >
-            <i className="bi bi-handbag"></i>
-          </IconButton>
+          <BagDropdown
+            open={openBagDropdown}
+            onClick={handleOpenBagDropdown}
+            bagLength={3}
+          />
           <Typography
             size={FontSize.SM}
             variant="inter"

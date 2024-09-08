@@ -8,8 +8,9 @@ interface SizePickerItemProps {
   size: SizeItemSize;
   sizeValue: SizeItemValue;
   theme: "dark" | "light";
-  isActive: boolean;
-  onClick: () => void;
+  customBorder?: string;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
 const SizePickerItem: React.FC<SizePickerItemProps> = ({
@@ -17,10 +18,13 @@ const SizePickerItem: React.FC<SizePickerItemProps> = ({
   sizeValue,
   isActive,
   theme,
+  customBorder,
   onClick,
 }) => {
   const handleClick = useCallback(() => {
-    onClick();
+    if (onClick) {
+      onClick();
+    }
   }, [onClick]);
 
   return (
@@ -32,12 +36,16 @@ const SizePickerItem: React.FC<SizePickerItemProps> = ({
           ? styles["size-picker-item-dark"]
           : styles["size-picker-item-light"]
       }`}
-      style={{ width: size, height: size }} // Ensure size is a string with units
+      style={{
+        width: size,
+        height: size,
+        border: customBorder?.length ? customBorder : "none",
+      }}
       onClick={handleClick}
     >
       <Typography
         variant="publicSans"
-        size={FontSize.SSM}
+        size={size === SizeItemSize.SMALL ? FontSize.XXS : FontSize.SSM}
         fontWeight={FontWeight.SEMI_BOLD}
         color={
           isActive

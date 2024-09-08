@@ -3,9 +3,9 @@
 :root {
   --font-inter: "Inter", sans-serif;
   --font-public-sans: "Public Sans", sans-serif;
-  --bs-dark: #000000;
+  --bs-dark: #0d0d0d;
   --bs-gray: #707070;
-  --bs-secondary: #DAE1EA;
+  --bs-secondary: #dae1ea;
   --bs-dark-rgb: 13, 13, 13;
   --bs-light-rgb: 239, 242, 246;
 
@@ -29,4 +29,13 @@
 .btn-secondary {
   background-color: var(--bs-secondary);
   border: 0;
+}
+
+.dropdown-menu.show {
+  background-color: #0d0d0d;
+  min-width: 395px;
+}
+
+.bg-dark {
+  background-color: var(--bs-dark);
 }

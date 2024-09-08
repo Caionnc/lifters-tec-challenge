@@ -10,6 +10,7 @@ interface TypographyProps {
   fontWeight: FontWeight;
   color?: "white" | "dark" | "primary" | "secondary";
   size: FontSize;
+  sx?: React.CSSProperties;
 }
 
 const Typography: React.FC<TypographyProps> = ({
@@ -18,6 +19,7 @@ const Typography: React.FC<TypographyProps> = ({
   fontWeight,
   color,
   size,
+  sx
 }) => {
   const fontClass =
     variant === "publicSans"
@@ -29,6 +31,7 @@ const Typography: React.FC<TypographyProps> = ({
   return (
     <p
       className={`${styles["mb-0"]} ${fontClass} ${fontWeightClass} ${textColor} ${styles[size]}`}
+      style={sx}
     >
       {children}
     </p>

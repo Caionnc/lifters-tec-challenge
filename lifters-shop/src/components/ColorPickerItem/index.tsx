@@ -5,8 +5,8 @@ import styles from "./ColorPickerItem.module.scss";
 interface ColorPickerItemProps {
   size: ColorPickerItemSize;
   color: string;
-  isActive: boolean;
-  onClick: () => void;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
 const ColorPickerItem: React.FC<ColorPickerItemProps> = ({
@@ -16,7 +16,9 @@ const ColorPickerItem: React.FC<ColorPickerItemProps> = ({
   onClick,
 }) => {
   const handleClick = useCallback(() => {
-    onClick();
+    if (onClick) {
+      onClick();
+    }
   }, [onClick]);
 
   return (
