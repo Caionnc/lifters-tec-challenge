@@ -27,8 +27,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         alt="..."
         style={{
           backgroundColor: "gray",
-          width: "264px",
-          height: "264px",
+          width: "250px",
+          height: "250px",
         }}
       />
       <div className="d-flex flex-row justify-content-between">

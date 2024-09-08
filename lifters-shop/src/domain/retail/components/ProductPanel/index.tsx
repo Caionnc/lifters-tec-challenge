@@ -34,7 +34,7 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ children, products }) => {
           {`Showing ${productsWithFilters.length} Products`}
         </Typography>
       </div>
-      <div className="d-flex flex-row flex-wrap gap-2">
+      <div className="d-flex flex-row flex-wrap gap-2 justify-content-end">
         {productsWithFilters.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}

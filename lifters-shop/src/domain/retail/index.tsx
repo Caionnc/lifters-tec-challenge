@@ -34,7 +34,9 @@ const Retail: React.FC = () => {
           our line-up of timeless pieces.
         </Typography>
       </div>
-      <div className={styles["retail-content-container"]}>
+      <div
+        className={`justify-content-center ${styles["retail-content-container"]}`}
+      >
         <div className="d-flex flex-row gap-3 align-items-end">
           <Typography
             size={FontSize.LLG}

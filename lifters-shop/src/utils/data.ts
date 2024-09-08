@@ -209,4 +209,88 @@ export const liftersShopProducts = [
       },
     ],
   },
+  {
+    id: 7,
+    titulo: "Men’s winter jacket 6",
+    valor: "$15",
+    descricao:
+      "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
+    categoria: "Pants",
+    cores: [
+      {
+        nome: "vermelho",
+        codigo: "#FA2204",
+      },
+    ],
+    tamanhos: ["XS"],
+    fotos: [
+      {
+        url: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        capa: true,
+      },
+    ],
+  },
+  {
+    id: 8,
+    titulo: "Men’s winter jacket 6",
+    valor: "$15",
+    descricao:
+      "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
+    categoria: "Pants",
+    cores: [
+      {
+        nome: "vermelho",
+        codigo: "#FA2204",
+      },
+    ],
+    tamanhos: ["XS"],
+    fotos: [
+      {
+        url: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        capa: true,
+      },
+    ],
+  },
+  {
+    id: 9,
+    titulo: "Men’s winter jacket 6",
+    valor: "$15",
+    descricao:
+      "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
+    categoria: "Pants",
+    cores: [
+      {
+        nome: "vermelho",
+        codigo: "#FA2204",
+      },
+    ],
+    tamanhos: ["XS"],
+    fotos: [
+      {
+        url: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        capa: true,
+      },
+    ],
+  },
+  {
+    id: 10,
+    titulo: "Men’s winter jacket 6",
+    valor: "$15",
+    descricao:
+      "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
+    categoria: "Pants",
+    cores: [
+      {
+        nome: "vermelho",
+        codigo: "#FA2204",
+      },
+    ],
+    tamanhos: ["XS"],
+    fotos: [
+      {
+        url: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        capa: true,
+      },
+    ],
+  },
 ];

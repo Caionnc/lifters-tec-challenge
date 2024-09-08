@@ -16,7 +16,7 @@ const Checkout: React.FC = () => {
   };
 
   return (
-    <div className={styles["checkout-container"]}>
+    <div className={`justify-content-center ${styles["checkout-container"]}`}>
       {/* Your Bag */}
       <div className="d-flex flex-row justify-content-between align-items-center">
         <div className="d-flex flex-row gap-2 align-items-center">
