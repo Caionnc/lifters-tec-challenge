@@ -104,6 +104,7 @@ const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
             Color
           </Typography>
           <ColorPicker
+            activeColor={activeColorOption}
             size={ColorPickerItemSize.LARGE}
             colors={colorSanitizer(product.cores)}
             setActiveColorOption={handleSetActiveColorOption}

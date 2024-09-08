@@ -8,6 +8,7 @@ interface ColorPickerProps {
   children?: React.ReactNode;
   size: ColorPickerItemSize;
   colors?: ProductColor[];
+  activeColor: string;
   setActiveColorOption: (color: string) => void;
 }
 
@@ -15,12 +16,11 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   children,
   size,
   colors,
+  activeColor,
   setActiveColorOption,
 }) => {
-  const [activeColor, setActiveColor] = React.useState<string | "">("");
   const handleActiveColor = (color: string) => {
     setActiveColorOption(color);
-    setActiveColor(color);
   };
 
   const colorPalette = colors !== undefined ? colors : colorsData;

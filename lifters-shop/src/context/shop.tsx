@@ -30,7 +30,8 @@ interface ShopContextType {
   addToCart: (product: BagProduct) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
-  productFilters: (filter: ProductFilters) => void;
+  productFilters: ProductFilters;
+  setProductFilters: (filters: ProductFilters) => void;
 }
 
 const defaultShopState: ShopContextType = {
@@ -47,7 +48,11 @@ const defaultShopState: ShopContextType = {
   addToCart: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
-  productFilters: () => {},
+  productFilters: {
+    category: "",
+    color: "",
+  },
+  setProductFilters: () => {},
 };
 
 export const LifterShopContext =
@@ -61,6 +66,11 @@ export const ShopContextProvider = ({
   const [shop, setShop] = useState<Partial<LifterShop>>(
     defaultShopState.liftersShop
   );
+
+  const [productFilters, setProductFilters] = useState<ProductFilters>({
+    category: "",
+    color: "",
+  });
 
   useEffect(() => {
     setShop({ storage: liftersShopProducts, cart: [], totalQuantity: 0 });
@@ -117,25 +127,8 @@ export const ShopContextProvider = ({
   );
 
   const clearCart = useCallback(() => {
-    setShop((prevShop) => {
-      return {
-        ...prevShop,
-        cart: [],
-        totalQuantity: 0,
-      };
-    });
-  }, [setShop]);
-
-  const productFilters = useMemo(() => {
-    return (filter: ProductFilters) => {
-      setShop((prevShop) => {
-        return {
-          ...prevShop,
-          filter: filter,
-        };
-      });
-    };
-  }, []);
+    setProductFilters({ category: "", color: "" });
+  }, [setProductFilters]);
 
   return (
     <LifterShopContext.Provider
@@ -146,10 +139,10 @@ export const ShopContextProvider = ({
         removeFromCart,
         clearCart,
         productFilters,
+        setProductFilters,
       }}
     >
       {children}
     </LifterShopContext.Provider>
   );
 };
-

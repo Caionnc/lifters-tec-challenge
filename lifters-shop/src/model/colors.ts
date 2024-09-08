@@ -10,5 +10,5 @@ export const colorsData: ProductColor[] =  [
   {nome: 'black', codigo: '#0D0D0D'},
   {nome: 'lightPurple', codigo: '#BB6BD9'},
   {nome: 'white', codigo: '#F2F2F2'},
-  {nome: 'lightGreen', codigo: '#6FCF97'},
+  {nome: 'red2', codigo: '#FA2204'},
 ];

@@ -163,4 +163,50 @@ export const liftersShopProducts = [
       },
     ],
   },
+  {
+    id: 5,
+    titulo: "Men’s winter jacket 5",
+    valor: "$102",
+    descricao:
+      "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
+    categoria: "Socks",
+    cores: [
+      {
+        nome: "vermelho",
+        codigo: "#FA2204",
+      },
+      {
+        nome: "azul",
+        codigo: "#001AFF",
+      }
+    ],
+    tamanhos: ["XS", "S", "M"],
+    fotos: [
+      {
+        url: "https://images.unsplash.com/photo-1572635196243-4dd75fbdbd7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        capa: false,
+      },
+    ],
+  },
+  {
+    id: 6,
+    titulo: "Men’s winter jacket 6",
+    valor: "$15",
+    descricao:
+      "Revamp your style with the latest designer trends in men’s clothing or achieve a perfectly curated wardrobe thanks to our line-up of timeless pieces.",
+    categoria: "Pants",
+    cores: [
+      {
+        nome: "vermelho",
+        codigo: "#FA2204",
+      },
+    ],
+    tamanhos: ["XS"],
+    fotos: [
+      {
+        url: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        capa: true,
+      },
+    ],
+  },
 ];

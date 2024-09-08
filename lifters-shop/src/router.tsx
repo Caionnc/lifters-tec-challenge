@@ -15,7 +15,7 @@ export const router = createBrowserRouter(
   [
     {
       path: ScreenRoutes.RETAIL as string,
-      element: <Retail></Retail>,
+      element: <Retail/>,
     },
     {
       path: ScreenRoutes.PRODUCT as string,
