@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Checkout.module.scss";
 import Typography from "@/components/UI/Typography";
 import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 import { useNavigate } from "react-router-dom";
 import BagItem from "@/components/BagDropdown/component/BagItem";
-import { liftersShopProducts } from "@/utils/data";
 import CreateOrderForm from "./components/FormCreateOrder/CreateOrderForm";
+import { LifterShopContext } from "@/context/shop";
 
 const Checkout: React.FC = () => {
-  const product = liftersShopProducts[0];
+  const { liftersShop } = useContext(LifterShopContext);
   const navigate = useNavigate();
 
   const handleNavHome = () => {
     navigate(`/`);
   };
+
   return (
     <div className={styles["checkout-container"]}>
       {/* Your Bag */}
@@ -48,9 +49,14 @@ const Checkout: React.FC = () => {
         <div className="d-flex flex-column justify-content-between gap-3">
           <div className={styles["checkout-products-container"]}>
             {/* Map de items */}
-            <BagItem theme="light" size="large" product={product} />
-            <BagItem theme="light" size="large" product={product} />
-            <BagItem theme="light" size="large" product={product} />
+            {liftersShop.cart?.map((product) => (
+              <BagItem
+                key={product.id}
+                theme="light"
+                size="large"
+                product={product}
+              />
+            ))}
           </div>
           {/* Security Policy */}
           <div className="d-flex flex-column">

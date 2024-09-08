@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
 import styles from "../../Checkout.module.scss";
 import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 import Typography from "@/components/UI/Typography";
+import { LifterShopContext } from "@/context/shop";
+import { enqueueSnackbar } from "notistack";
 
 const CheckoutForm: React.FC = () => {
+  const { liftersShop } = useContext(LifterShopContext);
+  const [acc, setAcc] = React.useState<number>(0);
+
+  const totalCartPrice = useMemo(() => {
+    return liftersShop.cart?.reduce(
+      (acc, product) => acc + Number(product.price),
+      0
+    );
+  }, [liftersShop.cart]);
+
+  useEffect(() => {
+    setAcc(totalCartPrice ?? 0);
+  }, [liftersShop.cart]);
+
   const formik = useFormik({
     initialValues: {
       cardNumber: "",
@@ -18,9 +34,23 @@ const CheckoutForm: React.FC = () => {
     },
     validationSchema: Yup.object({
       cardNumber: Yup.string()
-        .matches(/^[0-9 ]{19}$/, "Card number must be exactly 16 digits")
+        .matches(
+          /^(?:\d{4} ?){3}\d{3,4}$/,
+          "Card number must be 15 or 16 digits"
+        )
         .required("Card number is required"),
-      cardholderName: Yup.string().required("Cardholder name is required"),
+      cardholderName: Yup.string()
+        .required("Cardholder name is required")
+        .test(
+          "full-name",
+          "Invalid carholder name",
+          (value) => {
+            if (!value) return false;
+            const trimmedName = value.trim();
+            const words = trimmedName.split(/\s+/);
+            return words.length >= 2 && words.every((word) => word.length >= 3);
+          }
+        ),
       expiryMonth: Yup.string().required("Expiry month is required"),
       expiryYear: Yup.string().required("Expiry year is required"),
       cvv: Yup.string()
@@ -34,7 +64,7 @@ const CheckoutForm: React.FC = () => {
   });
 
   return (
-    <div className={styles["checkout-form-container"]}>
+    <div className={`${styles["checkout-form-container"]}`}>
       <div className="d-flex flex-row justify-content-between">
         <Typography
           size={FontSize.XLG}
@@ -50,7 +80,7 @@ const CheckoutForm: React.FC = () => {
           variant="publicSans"
           color="white"
         >
-          $999.99
+          {`$${totalCartPrice}`}
         </Typography>
       </div>
       <form
@@ -71,6 +101,7 @@ const CheckoutForm: React.FC = () => {
           </label>
           <InputMask
             mask="9999 9999 9999 9999"
+            maskChar={null}
             id="cardNumber"
             name="cardNumber"
             role="presentation"
@@ -205,6 +236,7 @@ const CheckoutForm: React.FC = () => {
           </label>
           <InputMask
             mask="9999"
+            maskChar={null}
             id="cvv"
             name="cvv"
             className="form-control"
@@ -246,7 +278,16 @@ const CheckoutForm: React.FC = () => {
 
         {/* Checkout Button */}
         <div className="d-flex flex-column">
-          <button type="submit" className="btn btn-light w-100 rounded-0">
+          <button
+            type="submit"
+            className="btn btn-light w-100 rounded-0"
+            onClick={() => {
+              enqueueSnackbar("Thanks for purchasing with us!", {
+                variant: "success",
+              });
+            }}
+            disabled={!formik.isValid}
+          >
             <Typography
               size={FontSize.SSM}
               fontWeight={FontWeight.SEMI_BOLD}

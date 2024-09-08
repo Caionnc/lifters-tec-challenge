@@ -70,7 +70,7 @@ const BagItem: React.FC<BagItemProps> = ({
               variant="publicSans"
               color={theme === "dark" ? "white" : "dark"}
             >
-              {product.price}
+              {`$${product.price}`}
             </Typography>
           </div>
           <div className="d-flex flex-row flex-fill justify-content-between align-items-center">

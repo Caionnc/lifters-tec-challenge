@@ -46,7 +46,7 @@ const SizePickerItem: React.FC<SizePickerItemProps> = ({
       <Typography
         variant="publicSans"
         size={size === SizeItemSize.SMALL ? FontSize.XXS : FontSize.SSM}
-        sx={size === SizeItemSize.SMALL ? { width: 'fit-content' } : {}}
+        sx={size === SizeItemSize.SMALL ? { fontSize: '10px' } : {}}
         fontWeight={FontWeight.SEMI_BOLD}
         color={
           isActive
