@@ -66,7 +66,7 @@ const TopBar: React.FC<TopBarProps> = ({ children }) => {
           <BagDropdown
             open={openBagDropdown}
             onClick={handleOpenBagDropdown}
-            bagLength={liftersShop.cart?.length ?? 0}
+            bagLength={liftersShop.totalQuantity ?? 0}
           />
           <Typography
             size={FontSize.SM}

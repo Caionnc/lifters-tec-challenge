@@ -17,10 +17,11 @@ const SizePicker: React.FC<SizePickerProps> = ({
   setActiveSizeOption,
 }) => {
   const [activeSize, setActiveSize] = React.useState<SizeItemValue | "">("");
-  const handleActiveSize = (size: SizeItemValue) => {
+  const handleActiveSize = React.useCallback((size: SizeItemValue) => {
     setActiveSizeOption(size);
     setActiveSize(size);
-  };
+    console.log("active size", size);
+  }, [setActiveSizeOption, setActiveSize]);
 
   const sizeOptions = sizes !== undefined ? sizes : sizesData;
 

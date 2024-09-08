@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../../BagDropdown.module.scss";
-import { BagProduct, Product } from "@/model/product";
+import { BagProduct } from "@/model/product";
 import Typography from "@/components/UI/Typography";
 import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 import SizePickerItem from "@/components/SizePickerItem";
 import ColorPickerItem from "@/components/ColorPickerItem";
 import { SizeItemSize, SizeItemValue } from "@/components/SizePickerItem/data";
 import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
+import { LifterShopContext } from "@/context/shop";
+import { enqueueSnackbar } from "notistack";
 
 interface BagItemProps {
   children?: React.ReactNode;
@@ -21,6 +23,12 @@ const BagItem: React.FC<BagItemProps> = ({
   size,
   product,
 }) => {
+  const { removeFromCart } = useContext(LifterShopContext);
+
+  const handleRemoveFromCart = React.useCallback(() => {
+    removeFromCart(product.id);
+  }, []);
+
   return (
     <div
       className={`${theme === "light" ? "bg-white" : "bg-dark"} 
@@ -88,7 +96,15 @@ const BagItem: React.FC<BagItemProps> = ({
                 color={product.color}
               />
             </div>
-            <button className="btn bg-transparent">
+            <button
+              className="btn bg-transparent"
+              onClick={() => {
+                handleRemoveFromCart();
+                enqueueSnackbar("Product item deleted!", {
+                  variant: "success",
+                });
+              }}
+            >
               <i
                 className={`bi bi-trash-fill ${
                   theme === "dark" ? "text-white" : "text-dark"

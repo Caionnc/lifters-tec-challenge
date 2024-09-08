@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { LifterShopContext } from "@/context/shop";
 import { v4 as uuidv4 } from "uuid";
 import { enqueueSnackbar } from "notistack";
+import { extractNumberFromPrice } from "@/utils/getPrice";
 interface ProductManagerProps {
   product: Product;
 }
@@ -19,27 +20,13 @@ const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
   const [activeSizeOption, setActiveSizeOption] = React.useState<
     SizeItemValue | ""
   >("");
-  const [activeColorOption, setActiveColorOption] = React.useState<string | "">(
-    ""
-  );
+  const [activeColorOption, setActiveColorOption] = React.useState<string>("");
   const navigate = useNavigate();
   const { addToCart } = useContext(LifterShopContext);
 
   const handleNavHome = () => {
     navigate(`/`);
   };
-
-  const handleAddToBag = useCallback(() => {
-    console.log("add to bag product", product.id);
-    addToCart({
-      id: uuidv4(),
-      name: product.titulo,
-      color: activeColorOption,
-      size: activeSizeOption,
-      price: product.valor,
-      image: product.fotos.find((foto) => foto.capa === true)?.url || "",
-    });
-  }, [product]);
 
   const colorSanitizer = useCallback(
     (colors: ProductColor[]): ProductColor[] => {
@@ -58,6 +45,26 @@ const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
     },
     []
   );
+
+  const handleSetActiveColorOption = useCallback((color: string) => {
+    setActiveColorOption(color);
+  }, []);
+
+  const handleSetActiveSizeOption = useCallback((size: SizeItemValue) => {
+    setActiveSizeOption(size);
+  }, []);
+
+  const handleAddToBag = useCallback(() => {
+    console.log("add to bag product", product.id);
+    addToCart({
+      id: uuidv4(),
+      name: product.titulo,
+      color: activeColorOption,
+      size: activeSizeOption,
+      price: extractNumberFromPrice(product.valor).toString(),
+      image: product.fotos.find((foto) => foto.capa === true)?.url || "",
+    });
+  }, [activeColorOption, activeSizeOption, product]);
 
   return (
     <div className={styles["product-manager-container"]}>
@@ -99,7 +106,7 @@ const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
           <ColorPicker
             size={ColorPickerItemSize.LARGE}
             colors={colorSanitizer(product.cores)}
-            setActiveColorOption={setActiveColorOption}
+            setActiveColorOption={handleSetActiveColorOption}
           />
         </div>
         <div className={styles["product-manager-size"]}>
@@ -114,7 +121,7 @@ const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
           <SizePicker
             size={SizeItemSize.LARGE}
             sizes={product.tamanhos}
-            setActiveSizeOption={setActiveSizeOption}
+            setActiveSizeOption={handleSetActiveSizeOption}
           />
         </div>
       </div>
