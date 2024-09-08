@@ -1,12 +1,14 @@
 import Typography from "@/components/UI/Typography";
-import React from "react";
+import React, { useContext } from "react";
 import Filters from "./components/Filters";
 import ProductPanel from "./components/ProductPanel";
 import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 import styles from "./Retail.module.scss";
+import { LifterShopContext } from "@/context/shop";
 
 const Retail: React.FC = () => {
   Retail.displayName = "Retail";
+  const { liftersShop, clearCart } = useContext(LifterShopContext);
 
   return (
     <div className="d-flex flex-column">
@@ -25,8 +27,10 @@ const Retail: React.FC = () => {
           fontWeight={FontWeight.NORMAL}
           color="white"
         >
-          Revamp your style with the latest designer trends in men’s<br />
-          clothing or achieve a perfectly curated wardrobe thanks to<br />
+          Revamp your style with the latest designer trends in men's
+          <br />
+          clothing or achieve a perfectly curated wardrobe thanks to
+          <br />
           our line-up of timeless pieces.
         </Typography>
       </div>
@@ -42,7 +46,7 @@ const Retail: React.FC = () => {
           </Typography>
           <button
             className="btn btn-link p-0"
-            onClick={() => console.log("clear filters callback")}
+            onClick={() => clearCart()}
             style={{ textAlign: "right" }}
           >
             <div className="d-fle flex-column align-self-end">
@@ -57,10 +61,10 @@ const Retail: React.FC = () => {
             </div>
           </button>
         </div>
-       <div className={styles["retail-content-displayer"]}>
-        <Filters></Filters>
-        <ProductPanel></ProductPanel>
-       </div>
+        <div className={styles["retail-content-displayer"]}>
+          <Filters></Filters>
+          <ProductPanel products={liftersShop.storage ?? []}></ProductPanel>
+        </div>
       </div>
     </div>
   );

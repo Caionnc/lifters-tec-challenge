@@ -3,8 +3,7 @@
 .product-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+  gap: 61px;
   width: 100%;
   background-color: var(--bs-white);
   padding: 171px 110px 0px 110px;

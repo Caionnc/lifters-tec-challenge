@@ -21,7 +21,7 @@ const ProductPage: React.FC = () => {
   }, [productId]);
 
   return (
-    <div className={styles["product-container"]}>
+    <div className={`container ${styles["product-container"]}`}>
       <div className="d-flex flex-column gap-2">
         <div className="d-flex flex-row gap-1">
           {productImages.slice(0, 2).map((image, index) => (

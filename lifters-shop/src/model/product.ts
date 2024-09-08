@@ -18,3 +18,12 @@ export interface Product {
   tamanhos: string[];
   fotos: Image[];
 }
+
+export interface BagProduct {
+  id: string;
+  name: string;
+  color: string;
+  size: string;
+  price: string;
+  image: string;
+}

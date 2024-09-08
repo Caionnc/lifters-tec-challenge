@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../BagDropdown.module.scss";
-import { Product } from "@/model/product";
+import { BagProduct, Product } from "@/model/product";
 import Typography from "@/components/UI/Typography";
 import { FontSize, FontWeight } from "@/components/UI/Typography/data";
 import SizePickerItem from "@/components/SizePickerItem";
@@ -12,7 +12,7 @@ interface BagItemProps {
   children?: React.ReactNode;
   theme: "dark" | "light";
   size: "small" | "large";
-  product: Product;
+  product: BagProduct;
 }
 
 const BagItem: React.FC<BagItemProps> = ({
@@ -29,7 +29,7 @@ const BagItem: React.FC<BagItemProps> = ({
     >
       <div className={styles["bag-item-container"]}>
         <img
-          src={product.fotos[0].url}
+          src={product.image}
           alt="product"
           className={styles["bag-item-image"]}
           style={{
@@ -52,7 +52,7 @@ const BagItem: React.FC<BagItemProps> = ({
                 textOverflow: "ellipsis",
               }}
             >
-              {product.titulo}
+              {product.name}
             </Typography>
             <Typography
               size={size === "small" ? FontSize.LG : FontSize.XLG}
@@ -62,14 +62,14 @@ const BagItem: React.FC<BagItemProps> = ({
               variant="publicSans"
               color={theme === "dark" ? "white" : "dark"}
             >
-              {product.valor}
+              {product.price}
             </Typography>
           </div>
           <div className="d-flex flex-row flex-fill justify-content-between align-items-center">
             <div className="d-flex flex-row gap-2">
               <SizePickerItem
-                key={product.tamanhos[0]}
-                sizeValue={product.tamanhos[0] as SizeItemValue}
+                key={product.size}
+                sizeValue={product.size as SizeItemValue}
                 size={
                   size === "small" ? SizeItemSize.SMALL : SizeItemSize.LARGE
                 }
@@ -79,13 +79,13 @@ const BagItem: React.FC<BagItemProps> = ({
                 }
               />
               <ColorPickerItem
-                key={product.cores[0].nome}
+                key={product.color}
                 size={
                   size === "small"
                     ? ColorPickerItemSize.SMALL
                     : ColorPickerItemSize.LARGE
                 }
-                color={product.cores[0].codigo}
+                color={product.color}
               />
             </div>
             <button className="btn bg-transparent">

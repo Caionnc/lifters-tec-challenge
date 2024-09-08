@@ -24,7 +24,6 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   };
 
   const colorPalette = colors !== undefined ? colors : colorsData;
-  console.log("colorPalette", colorPalette);
 
   const firstRowColors = colorPalette.slice(
     0,

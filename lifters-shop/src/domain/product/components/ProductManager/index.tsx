@@ -1,5 +1,5 @@
 import { ProductColor, Product } from "@/model/product";
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import styles from "../../Product.module.scss";
 import Typography from "@/components/UI/Typography";
 import { FontSize, FontWeight } from "@/components/UI/Typography/data";
@@ -8,19 +8,39 @@ import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
 import SizePicker from "../SizePicker";
 import { SizeItemSize, SizeItemValue } from "@/components/SizePickerItem/data";
 import { useNavigate } from "react-router-dom";
-
+import { LifterShopContext } from "@/context/shop";
+import { v4 as uuidv4 } from "uuid";
+import { enqueueSnackbar } from "notistack";
 interface ProductManagerProps {
   product: Product;
 }
 
 const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
-  const [, setActiveSizeOption] = React.useState<SizeItemValue | "">("");
-  const [, setActiveColorOption] = React.useState<string | "">("");
+  const [activeSizeOption, setActiveSizeOption] = React.useState<
+    SizeItemValue | ""
+  >("");
+  const [activeColorOption, setActiveColorOption] = React.useState<string | "">(
+    ""
+  );
   const navigate = useNavigate();
+  const { addToCart } = useContext(LifterShopContext);
 
   const handleNavHome = () => {
     navigate(`/`);
   };
+
+  const handleAddToBag = useCallback(() => {
+    console.log("add to bag product", product.id);
+    addToCart({
+      id: uuidv4(),
+      name: product.titulo,
+      color: activeColorOption,
+      size: activeSizeOption,
+      price: product.valor,
+      image: product.fotos.find((foto) => foto.capa === true)?.url || "",
+    });
+  }, [product]);
+
   const colorSanitizer = useCallback(
     (colors: ProductColor[]): ProductColor[] => {
       return colors.map((color) => {
@@ -102,7 +122,20 @@ const ProductManager: React.FC<ProductManagerProps> = ({ product }) => {
         <button
           className={`btn bg-dark rounded-0 text-white ${styles["product-manager-add-btn"]}`}
           type="button"
-          onClick={() => console.log("add to bag product", product.id)}
+          onClick={() => {
+            if (activeColorOption === "" || activeSizeOption === "") {
+              enqueueSnackbar("Please select a color and a size", {
+                variant: "error",
+              });
+              return;
+            } else {
+              handleAddToBag();
+              enqueueSnackbar("Product added to your bag", {
+                variant: "success",
+              });
+              console.log("added to bag:", product.titulo);
+            }
+          }}
         >
           <div className="d-flex flex-row gap-2 justify-content-center align-items-center">
             <i className="bi bi-handbag"></i>

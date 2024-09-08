@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchField from "./components/SearchField";
 import Typography from "../UI/Typography";
 import { useNavigate } from "react-router-dom";
 import { FontSize, FontWeight } from "../UI/Typography/data";
 import styles from "./TopBar.module.scss";
 import BagDropdown from "../BagDropdown";
+import { LifterShopContext } from "@/context/shop";
 
 interface TopBarProps {
   children?: React.ReactNode;
@@ -13,6 +14,7 @@ interface TopBarProps {
 const TopBar: React.FC<TopBarProps> = ({ children }) => {
   const navigate = useNavigate();
   const [openBagDropdown, setOpenBagDropdown] = React.useState(false);
+  const { liftersShop } = useContext(LifterShopContext);
 
   const handleOpenBagDropdown = React.useCallback(() => {
     setOpenBagDropdown((prevState) => !prevState);
@@ -64,7 +66,7 @@ const TopBar: React.FC<TopBarProps> = ({ children }) => {
           <BagDropdown
             open={openBagDropdown}
             onClick={handleOpenBagDropdown}
-            bagLength={3}
+            bagLength={liftersShop.cart?.length ?? 0}
           />
           <Typography
             size={FontSize.SM}

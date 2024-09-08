@@ -23,7 +23,6 @@ const SizePicker: React.FC<SizePickerProps> = ({
   };
 
   const sizeOptions = sizes !== undefined ? sizes : sizesData;
-  console.log("colorPalette", sizeOptions);
 
   return (
     <>
