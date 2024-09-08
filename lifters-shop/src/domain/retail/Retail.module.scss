@@ -12,3 +12,21 @@
   padding: 34px 110px 47px 110px;
   margin-top: 67px;
 }
+
+.retail-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: 19px;
+  background-color: var(--bs-white);
+  padding: 43px 110px 0px 110px;
+}
+
+.retail-content-displayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--bs-white);
+}

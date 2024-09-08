@@ -30,9 +30,37 @@ const Retail: React.FC = () => {
           our line-up of timeless pieces.
         </Typography>
       </div>
-      <div className="d-flex flex-row gap-5 justify-content-between px-5 py-5 bg-white">
+      <div className={styles["retail-content-container"]}>
+        <div className="d-flex flex-row gap-3 align-items-end">
+          <Typography
+            size={FontSize.LLG}
+            fontWeight={FontWeight.SEMI_BOLD}
+            variant="publicSans"
+            color="dark"
+          >
+            Filters
+          </Typography>
+          <button
+            className="btn btn-link p-0"
+            onClick={() => console.log("clear filters callback")}
+            style={{ textAlign: "right" }}
+          >
+            <div className="d-fle flex-column align-self-end">
+              <Typography
+                size={FontSize.XS}
+                fontWeight={FontWeight.NORMAL}
+                color="dark"
+                variant="publicSans"
+              >
+                <u style={{ color: "#C4C4C4" }}>Clear filters</u>
+              </Typography>
+            </div>
+          </button>
+        </div>
+       <div className={styles["retail-content-displayer"]}>
         <Filters></Filters>
         <ProductPanel></ProductPanel>
+       </div>
       </div>
     </div>
   );

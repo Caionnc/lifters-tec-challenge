@@ -1,27 +1,29 @@
 import React from "react";
-import { Color, colorsData } from "@/model/colors";
+import { colorsData } from "@/model/colors";
 import ColorPickerItem from "@/components/ColorPickerItem";
 import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
+import { ProductColor } from "@/model/product";
 
 interface ColorPickerProps {
   children?: React.ReactNode;
   size: ColorPickerItemSize;
-  colors?: Color[];
+  colors?: ProductColor[];
+  setActiveColorOption: (color: string) => void;
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({
   children,
   size,
   colors,
+  setActiveColorOption,
 }) => {
   const [activeColor, setActiveColor] = React.useState<string | "">("");
-  const colorArray = Object.entries(colorsData) as Color[];
-
-  const handleActiveColor = React.useCallback((color: string) => {
+  const handleActiveColor = (color: string) => {
+    setActiveColorOption(color);
     setActiveColor(color);
-  }, []);
+  };
 
-  const colorPalette = colors !== undefined ? colors : colorArray;
+  const colorPalette = colors !== undefined ? colors : colorsData;
   console.log("colorPalette", colorPalette);
 
   const firstRowColors = colorPalette.slice(
@@ -35,24 +37,24 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   return (
     <div className="d-flex flex-column gap-1">
       <div className="d-flex flex-row gap-1">
-        {firstRowColors.map(([color, hex]) => (
+        {firstRowColors.map((color) => (
           <ColorPickerItem
-            key={color}
+            key={color.nome}
             size={size}
-            color={hex}
-            isActive={activeColor === hex}
-            onClick={() => handleActiveColor(hex)}
+            color={color.codigo}
+            isActive={activeColor === color.codigo}
+            onClick={() => handleActiveColor(color.codigo)}
           />
         ))}
       </div>
       <div className="d-flex flex-row gap-1">
-        {secondRowColors.map(([color, hex]) => (
+        {secondRowColors.map((color) => (
           <ColorPickerItem
-            key={color}
+            key={color.nome}
             size={size}
-            color={hex}
-            isActive={activeColor === hex}
-            onClick={() => handleActiveColor(hex)}
+            color={color.codigo}
+            isActive={activeColor === color.codigo}
+            onClick={() => handleActiveColor(color.codigo)}
           />
         ))}
       </div>

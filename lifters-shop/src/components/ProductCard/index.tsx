@@ -20,7 +20,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       style={{ cursor: "pointer" }}
       onClick={handleProductClick}
     >
-      <img src={"..."} className="img-thumbnail" alt="..." />
+      {/* <img src={"..."} className="img-thumbnail" alt="..." /> */}
+      {/* Test purpose */}
+      <div style={{backgroundColor: 'gray', width: '13.75rem', height: '13.75rem'}}/>
       <div className="d-flex flex-row justify-content-between">
         {product.titulo}
         {product.tamanhos[0]}

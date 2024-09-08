@@ -10,34 +10,9 @@ interface FiltersProps {
 }
 
 const Filters: React.FC<FiltersProps> = ({ children }) => {
+  const [, setActiveColorOption] = React.useState<string | "">("");
   return (
     <div className="d-flex flex-column gap-3">
-      <div className="d-flex flex-row gap-3 align-items-end">
-        <Typography
-          size={FontSize.LLG}
-          fontWeight={FontWeight.SEMI_BOLD}
-          variant="publicSans"
-          color="dark"
-        >
-          Filters
-        </Typography>
-        <button
-          className="btn btn-link p-0"
-          onClick={() => console.log("clear filters callback")}
-          style={{ textAlign: "right" }}
-        >
-          <div className="d-fle flex-column align-self-end">
-            <Typography
-              size={FontSize.XS}
-              fontWeight={FontWeight.NORMAL}
-              color="dark"
-              variant="publicSans"
-            >
-              <u style={{ color: "#C4C4C4" }}>Clear filters</u>
-            </Typography>
-          </div>
-        </button>
-      </div>
       <div className="d-flex flex-column gap-3">
         <Typography
           size={FontSize.XS}
@@ -183,7 +158,10 @@ const Filters: React.FC<FiltersProps> = ({ children }) => {
         >
           Color
         </Typography>
-        <ColorPicker size={ColorPickerItemSize.SEMI_MEDIUM} />
+        <ColorPicker
+          size={ColorPickerItemSize.SEMI_MEDIUM}
+          setActiveColorOption={setActiveColorOption}
+        />
       </div>
     </div>
   );

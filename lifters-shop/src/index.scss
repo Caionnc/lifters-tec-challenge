@@ -5,6 +5,7 @@
   --font-public-sans: "Public Sans", sans-serif;
   --bs-dark: #000000;
   --bs-gray: #707070;
+  --bs-secondary: #DAE1EA;
   --bs-dark-rgb: 13, 13, 13;
   --bs-light-rgb: 239, 242, 246;
 
@@ -16,10 +17,16 @@
   // Variables for font sizes
   --font-xxs: 13px;
   --font-xs: 14px;
+  --font-ssm: 16px;
   --font-sm: 17px;
   --font-md: 18px;
   --font-lg: 20px;
   --font-llg: 22px;
   --font-xlg: 25px;
   --font-xxl: 36px;
+}
+
+.btn-secondary {
+  background-color: var(--bs-secondary);
+  border: 0;
 }

@@ -1,74 +1,52 @@
-import Typography from "@/components/UI/Typography";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ColorPicker from "../retail/components/ColorPicker";
-import { ColorPickerItemSize } from "@/components/ColorPickerItem/data";
-import { FontSize, FontWeight } from "@/components/UI/Typography/data";
+import { liftersShopProducts } from "@/utils/data";
+import { ImageAlbum } from "./data";
+import styles from "./Product.module.scss";
+import ProductManager from "./components/ProductManager";
+import { Product } from "@/model/product";
 
-const Product: React.FC = () => {
+const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
+  const [productImages, setProductImages] = React.useState<ImageAlbum[]>([]);
+  const [product, setProduct] = React.useState<Product | undefined>();
+
+  useEffect(() => {
+    const filteredProduct =
+      liftersShopProducts.filter(
+        (product) => product.id === Number(productId)
+      )[0] || undefined;
+    setProductImages(filteredProduct.fotos);
+    setProduct(filteredProduct);
+  }, [productId]);
 
   return (
-    <div className="d-flex flex-row py-5 px-5">
-      {/* Product Images */}
+    <div className={styles["product-container"]}>
       <div className="d-flex flex-column gap-2">
-        <div className="d-flex flex-row gap-2">
-          <img
-            src="https://via.placeholder.com/300"
-            alt="product"
-            className="img-thumbnail"
-          />
-          <img
-            src="https://via.placeholder.com/300"
-            alt="product"
-            className="img-thumbnail"
-          />
+        <div className="d-flex flex-row gap-1">
+          {productImages.slice(0, 2).map((image, index) => (
+            <img
+              src={image.url}
+              className="img-fluid"
+              alt={`product-image-${index}`}
+              style={{ width: "277px", height: "277px" }}
+            />
+          ))}
         </div>
-        <div className="d-flex flex-row gap-2">
-          <img
-            src="https://via.placeholder.com/300"
-            alt="product"
-            className="img-thumbnail"
-          />
-          <img
-            src="https://via.placeholder.com/300"
-            alt="product"
-            className="img-thumbnail"
-          />
+        <div className="d-flex flex-row gap-1">
+          {productImages.slice(2, 4).map((image, index) => (
+            <img
+              src={image.url}
+              className="img-fluid"
+              alt={`product-image-${index}`}
+              style={{ width: "277px", height: "277px" }}
+            />
+          ))}
         </div>
       </div>
-      <div className="d-flex flex-column gap-2">
-        <div className="d-flex flex-column gap-1">
-          <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="dark">
-            {productId}
-          </Typography>
-          <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="dark">
-            $99
-          </Typography>
-        </div>
-        <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="dark">
-          Revamp your style with the latest designer
-          <br />
-          trends in men’s clothing or achieve
-          <br />
-          a perfectly curated wardrobe thanks to our
-          <br />
-          line-up of timeless pieces.
-        </Typography>
-        <div className="d-flex flex-column gap-1">
-          <Typography size={FontSize.LG} fontWeight={FontWeight.BOLD} variant="publicSans" color="secondary">
-            Color
-          </Typography>
-          <ColorPicker size={ColorPickerItemSize.LARGE}></ColorPicker>
-        </div>
-
-        <p>Product Description</p>
-        <p>Product Price</p>
-        <button>Add to Cart</button>
-      </div>
-      <p>Product ID: {productId}</p>
+      {product && <ProductManager product={product} />}
     </div>
   );
 };
 
-export default Product;
+export default ProductPage;

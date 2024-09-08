@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Retail from "@/domain/retail";
 import TopBar from "./components/TopBar";
-import Product from "./domain/product";
+import ProductPage from "./domain/product";
 
 export enum ScreenRoutes {
   RETAIL = "/",
@@ -18,7 +18,7 @@ export const router = createBrowserRouter(
     },
     {
       path: ScreenRoutes.PRODUCT as string,
-      element: <Product />,
+      element: <ProductPage />,
     },
   ].map((route) => ({
     ...route,

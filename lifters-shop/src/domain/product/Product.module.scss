@@ -1,0 +1,76 @@
+@import "bootstrap/scss/bootstrap";
+
+.product-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  background-color: var(--bs-white);
+  padding: 171px 110px 0px 110px;
+  margin-top: 67px;
+}
+
+.product-images-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 566px;
+  max-height: 566px;
+  padding: 0px 110px;
+}
+
+//product manager
+.product-manager-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 55px;
+  height: fit-content;
+  width: fit-content;
+}
+
+.product-manager-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.product-manager-description {
+  margin-top: 14px;
+  max-width: 357px;
+}
+
+.product-manager-color {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-manager-size {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-manager-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  gap: 10px;
+}
+
+.product-manager-add-btn {
+  min-width: 275px;
+  color: var(--bs-white);
+}
+
+.product-manager-back-btn {
+  min-width: 121px;
+  align-self: center;
+  color: var(--bs-dark);
+  background-color: #dae1ea;
+}

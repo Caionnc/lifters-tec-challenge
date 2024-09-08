@@ -12,14 +12,14 @@ interface TopBarProps {
 const TopBar: React.FC<TopBarProps> = ({ children }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleNavHome = () => {
     navigate(`/`);
   };
   return (
     <div className="d-flex flex-column">
       <div className={styles["top-bar-container"]}>
         <div className="d-flex align-items-center gap-3">
-          <div style={{ cursor: "pointer" }} onClick={handleClick}>
+          <div style={{ cursor: "pointer" }} onClick={handleNavHome}>
             <Typography
               size={FontSize.LG}
               variant="inter"

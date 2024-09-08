@@ -1,4 +1,4 @@
-export interface Color {
+export interface ProductColor {
   nome: string;
   codigo: string;
 }
@@ -14,7 +14,7 @@ export interface Product {
   valor: string;
   descricao: string;
   categoria: string;
-  cores: Color[];
+  cores: ProductColor[];
   tamanhos: string[];
   fotos: Image[];
 }
