@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Typography.module.scss";
 import { FontSize, FontWeight } from "./data";
 
-type Variant = "inter" | "publicSans";
+type Variant = "inter" | "publicSans" | "roboto";
 interface TypographyProps {
   children?: React.ReactNode;
   variant?: Variant;

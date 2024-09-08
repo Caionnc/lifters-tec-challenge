@@ -22,7 +22,11 @@ const BagItem: React.FC<BagItemProps> = ({
   product,
 }) => {
   return (
-    <div className={styles["bag-dropdown-container"]}>
+    <div
+      className={`${theme === "light" ? "bg-white" : "bg-dark"} 
+        ${styles["bag-dropdown-container"]} 
+        ${size === "large" ? "p-0" : ""}`}
+    >
       <div className={styles["bag-item-container"]}>
         <img
           src={product.fotos[0].url}
@@ -36,7 +40,7 @@ const BagItem: React.FC<BagItemProps> = ({
         <div className="d-flex flex-column flex-fill">
           <div className={styles["bag-item-info-name-price"]}>
             <Typography
-              size={size === "small" ? FontSize.LG : FontSize.LG}
+              size={size === "small" ? FontSize.LG : FontSize.LLG}
               fontWeight={
                 size === "small" ? FontWeight.NORMAL : FontWeight.NORMAL
               }
@@ -51,9 +55,9 @@ const BagItem: React.FC<BagItemProps> = ({
               {product.titulo}
             </Typography>
             <Typography
-              size={size === "small" ? FontSize.LG : FontSize.LG}
+              size={size === "small" ? FontSize.LG : FontSize.XLG}
               fontWeight={
-                size === "small" ? FontWeight.NORMAL : FontWeight.NORMAL
+                size === "small" ? FontWeight.NORMAL : FontWeight.BOLD
               }
               variant="publicSans"
               color={theme === "dark" ? "white" : "dark"}
@@ -66,18 +70,30 @@ const BagItem: React.FC<BagItemProps> = ({
               <SizePickerItem
                 key={product.tamanhos[0]}
                 sizeValue={product.tamanhos[0] as SizeItemValue}
-                size={SizeItemSize.SMALL}
-                theme="dark"
-                customBorder="1px solid white"
+                size={
+                  size === "small" ? SizeItemSize.SMALL : SizeItemSize.LARGE
+                }
+                theme={theme === "dark" ? "dark" : "light"}
+                customBorder={
+                  theme === "dark" ? "1px solid white" : "1px solid dark"
+                }
               />
               <ColorPickerItem
                 key={product.cores[0].nome}
-                size={ColorPickerItemSize.SMALL}
+                size={
+                  size === "small"
+                    ? ColorPickerItemSize.SMALL
+                    : ColorPickerItemSize.LARGE
+                }
                 color={product.cores[0].codigo}
               />
             </div>
             <button className="btn bg-transparent">
-              <i className="bi bi-trash-fill text-white"></i>
+              <i
+                className={`bi bi-trash-fill ${
+                  theme === "dark" ? "text-white" : "text-dark"
+                } ${styles["bag-item-trash-icon"]}`}
+              ></i>
             </button>
           </div>
         </div>

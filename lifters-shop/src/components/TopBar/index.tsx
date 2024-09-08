@@ -24,7 +24,6 @@ const TopBar: React.FC<TopBarProps> = ({ children }) => {
 
   return (
     <div className="d-flex flex-column">
-      {/* Overlay that appears when the dropdown is open */}
       {openBagDropdown && <div className={styles["overlay"]}></div>}
       <div className={styles["top-bar-container"]}>
         <div className="d-flex align-items-center gap-3">
