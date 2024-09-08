@@ -37,7 +37,7 @@ This project incorporates several technologies:
 
 ## Video
 
-- **System Test**: [Link to video]
+- **System Test**: [[Link to video](https://youtu.be/_6vDaMbCKAs)]
 
 ## Future Enhancements
 
